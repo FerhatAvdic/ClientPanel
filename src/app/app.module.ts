@@ -1,6 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularFire2';
+import { AngularFirestoreModule } from 'angularFire2/firestore';
+import { AngularFireAuthModule } from 'angularFire2/auth';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,6 +22,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { EditClientComponent } from './components/edit-client/edit-client.component';
+import { ClientService } from './services/client.service';
 
 
 @NgModule({
@@ -34,9 +42,14 @@ import { EditClientComponent } from './components/edit-client/edit-client.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    FormsModule,
+    FlashMessagesModule.forRoot()
   ],
-  providers: [],
+  providers: [ClientService, AngularFirestoreModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
