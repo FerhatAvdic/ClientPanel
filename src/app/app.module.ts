@@ -24,6 +24,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { EditClientComponent } from './components/edit-client/edit-client.component';
 import { ClientService } from './services/client.service';
 import { AuthService } from "./services/auth.service";
+import { SettingsService } from './services/settings.service';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { AuthService } from "./services/auth.service";
     FormsModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [ClientService, AuthService, AngularFirestoreModule],
+  providers: [SettingsService, ClientService, AuthService, AngularFirestoreModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
